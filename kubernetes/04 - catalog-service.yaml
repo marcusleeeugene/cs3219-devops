@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: catalog-service
+  namespace: cs3219
+  labels:
+    app: catalog-service
+spec:
+  type: ClusterIP # ClusterIP
+  selector:
+    app: catalog-service
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+# kubectl apply -f "./kubernetes/04 - catalog-service.yaml"

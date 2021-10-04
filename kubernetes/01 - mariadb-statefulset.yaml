@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: cs3219-db
+  namespace: cs3219
   labels:
     app: cs3219-db
 spec:
@@ -25,4 +26,4 @@ spec:
               value: cs3219
             - name: MYSQL_ROOT_PASSWORD
               value: password
-# kubectl apply --namespace=cs3219 -f "./kubernetes/01 - mariadb-statefulset.yaml"
+# kubectl apply -f "./kubernetes/01 - mariadb-statefulset.yaml"

@@ -2,11 +2,12 @@ apiVersion: v1
 kind: Service
 metadata:
   name: cs3219-db
+  namespace: cs3219
 spec:
-  type: NodePort
+  type: ClusterIP # ClusterIP
   selector:
     app: cs3219-db
   ports:
     - port: 3306
       targetPort: 3306
-# kubectl apply --namespace=cs3219 -f "./kubernetes/02 - mariadb-service.yaml"
+# kubectl apply -f "./kubernetes/02 - mariadb-service.yaml"

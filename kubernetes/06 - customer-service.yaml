@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: customer-service
+  namespace: cs3219
+  labels:
+    app: customer-service
+spec:
+  type: ClusterIP # ClusterIP
+  selector:
+    app: customer-service
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+# kubectl apply -f "./kubernetes/06 - customer-service.yaml"

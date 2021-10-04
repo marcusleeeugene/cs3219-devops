@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateway-service
+  namespace: cs3219
+  labels:
+    app: api-gateway-service
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: api-gateway
+  template:
+    metadata:
+      labels:
+        app: api-gateway
+    spec:
+      containers:
+      - name: api-gateway
+        image: cs3219/api-gateway:1.0.0
+# kubectl apply -f "./kubernetes/09 - api-gateway-deployment.yaml"
