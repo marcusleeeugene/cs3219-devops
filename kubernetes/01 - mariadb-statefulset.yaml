@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: cs3219-db
+  labels:
+    app: cs3219-db
+spec:
+  serviceName: cs3219-db
+  selector:
+    matchLabels:
+      app: cs3219-db
+  template:
+    metadata:
+      labels:
+        app: cs3219-db
+    spec:
+      containers:
+        - name: cs3219-db
+          image: cs3219/mariadb:1.0.0
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MYSQL_DATABASE
+              value: cs3219
+            - name: MYSQL_ROOT_PASSWORD
+              value: password
+# kubectl apply --namespace=cs3219 -f "./kubernetes/01 - mariadb-statefulset.yaml"
